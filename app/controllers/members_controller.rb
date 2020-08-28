@@ -17,7 +17,14 @@ class MembersController < ApplicationController
         @member = Member.new(birthday: Date.new(1980,1,1))
     end
 
+    #会員の新規登録
     def create
+        @member = Member.new(params[:member])
+        if @member.save
+            redirect_to @member, notice: "会員を登録しました"
+        else
+            render "new"
+        end
     end
 
     def edit
