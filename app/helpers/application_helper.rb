@@ -1,5 +1,4 @@
 module ApplicationHelper
-
     def page_title
         title = "Study"
         title = @page_title + "-" + title if @page_title
@@ -13,5 +12,4 @@ module ApplicationHelper
             end
         end
     end
-
 end
