@@ -1,2 +1,7 @@
-<h1>こんにちわ</h1>
-<p>これからRailsの勉強を始めます</p>
+<% @articles.each do |article| %>
+<h2><%= article.title %></h2>
+<p>
+<%= truncate article.body, length: 80 %>>
+<%= link_to "もっと読む", article %>
+</p>
+<% end %>
