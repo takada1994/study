@@ -68,3 +68,7 @@ gem 'email_validator'
 
 # Internationalization
 gem 'rails-i18n'
+
+
+gem 'kaminari'
+gem 'kaminari-i18n'
