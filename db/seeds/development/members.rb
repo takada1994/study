@@ -14,3 +14,17 @@ gnames = ["太郎", "次郎", "花子"]
     password_confirmation: "study"
   )
 end
+
+0.upto(29) do |idx|
+  Member.create(
+    number: idx + 20,
+    name: "Jhon#{idx + 1}",
+    full_name: "Jhon Doe#{idx + 1}",
+    email: "Jhon#{idx + 1}@example.com",
+    birthday: "1981-12-01",
+    sex: 1,
+    administrator: false,
+    password: "study",
+    password_confirmation: "study"
+  )
+end
