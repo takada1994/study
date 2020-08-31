@@ -9,8 +9,7 @@ class Member < ApplicationRecord
       allow_blank: true
     },
     uniqueness: true
-
-    validates :name, presence: true,
+  validates :name, presence: true,
     format: {
       with: /\A[A-Za-z][A-Za-z0-9]*\z/,
       allow_blank: true,
@@ -18,21 +17,20 @@ class Member < ApplicationRecord
     },
     length: { minimum: 2, maximum: 20, allow_blank: true },
     uniqueness: { case_sensitive: false }
+  validates :full_name, presence: true, length: { maximum: 20 }
+  validates :email, email: { allow_blank: true }
 
-    validates :full_name, presence: true, length: { maximum: 20 }
+  attr_accessor :current_password
+  validates :password, presence: { if: :current_password }
 
-    validates :email, email: { allow_blank: true }
-
-
-        class << self
-          def search(query)
-            rel = order("number")
-            if query.present?
-              rel = rel.where("name LIKE ? OR full_name LIKE ?",
-                "%#{query}%", "%#{query}%")
-            end
-            rel
-          end
-        end
-      
+  class << self
+    def search(query)
+      rel = order("number")
+      if query.present?
+        rel = rel.where("name LIKE ? OR full_name LIKE ?",
+          "%#{query}%", "%#{query}%")
+      end
+      rel
+    end
+  end
 end
