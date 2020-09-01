@@ -69,6 +69,9 @@ gem 'email_validator'
 # Internationalization
 gem 'rails-i18n'
 
-
+# Pagination
 gem 'kaminari'
 gem 'kaminari-i18n'
+
+
+gem 'jquery-rails'
