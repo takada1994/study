@@ -24,7 +24,7 @@ end
   end
 
   def create
-    @entry = Entry.new(params[:entry])
+    @entry = Entry.new(entry_params)
     @entry.author = current_member
     if @entry.save
       redirect_to @entry, notice: "記事を更新しました"
@@ -35,7 +35,7 @@ end
 
   def update
     @entry = current_member.entries.find(params[:id])
-    @entry.assign_attributes(params[:entry])
+    @entry.assign_attributes(entry_params)
     if @entry.save
       redirect_to @entry, notice: "記事を更新しました。"
     else
@@ -47,6 +47,16 @@ end
     @entry = current_member.entries.find(params[:id])
     @entry.destroy
     redirect_to :entries, notice: "記事を更新しました。"
+  end
+
+  private def entry_params
+    params.require(:entry).permit(
+      :member_id,
+      :title,
+      :body,
+      :posted_at,
+      :status
+    )
   end
 
 end
