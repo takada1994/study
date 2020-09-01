@@ -26,5 +26,10 @@ module Myproject
             controller_specs: false, 
             routing_specs: false
     end
+
+    config.exceptions_app = ->(env) do
+      ErrorsController.action(:show).call(env)
+    end
+    
   end
 end
