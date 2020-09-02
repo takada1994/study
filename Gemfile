@@ -75,3 +75,6 @@ gem 'kaminari-i18n'
 
 
 gem 'jquery-rails'
+
+# Image Upload
+gem 'mini_magick'
