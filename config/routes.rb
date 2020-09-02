@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "top#index"
   get "about" => "top#about", as: "about"
 
-  resources :members do
+  resources :members, only: [:index, :show] do
     get "search", on: :collection
     resources :entries, only: [:index]
   end
@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root "top#index"
+    root to: "top#index"
+    resources :members do
+      get "search", on: :collection
+    end
   end
 end
