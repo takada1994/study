@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'entry_images/index'
-  get 'entry_images/new'
-  get 'entry_images/edit'
   root "top#index"
   get "about" => "top#about", as: "about"
 
@@ -19,5 +16,9 @@ Rails.application.routes.draw do
     patch :like, :unlike, on: :member
     get :voted, on: :collection
     resources :images, controller: "entry_images"
+  end
+
+  namespace :admin do
+    root "top#index"
   end
 end
