@@ -49,6 +49,12 @@ end
     redirect_to :entries, notice: "記事を更新しました。"
   end
 
+  def like
+    @entry = Entry.published.find(params[:id])
+    current_member.voted_entries << @entry
+    redirect_to @entry, notice: "投票しました。"
+  end
+
   private def entry_params
     params.require(:entry).permit(
       :member_id,
